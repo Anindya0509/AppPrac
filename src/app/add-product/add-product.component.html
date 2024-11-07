@@ -1,0 +1,51 @@
+<div class="example-wrapper">
+    <h3>Add Products</h3>  
+<section class="container">
+    
+
+    <form class="form" [formGroup]="reactiveForm">
+        <div class="column">
+            <div class="input-box">
+                <span>Enter ID</span><br><input type="number" placeholder="ID" formControlName="id"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="column">
+            <div class="input-box">
+                <span>Enter Product Name</span><br><input type="text" placeholder="Name" formControlName="name"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="column">
+            <div class="input-box">
+                <span>Enter Description</span><br><input type="text" placeholder="Description" formControlName="description"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="column">
+            <div class="input-box">
+                <span>Enter Price</span><br><input type="number" placeholder="Price" formControlName="price"/>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="column">
+            <div class="input-box">
+                <span>Enter Rating</span><br><input type="number" placeholder="Rating" formControlName="rating"/>
+            </div>
+        </div><br>
+        
+    </form>
+    <button (click)="saveProduct()">Save Product</button>
+</section>
+
+<button (click)="closePopUp()">Cancel</button>
+
+</div>

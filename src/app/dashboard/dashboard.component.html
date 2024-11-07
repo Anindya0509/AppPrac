@@ -1,0 +1,39 @@
+@if(!addProdVal){
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@ag-grid-community/styles@32.3.2/ag-grid.css" />
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@ag-grid-community/styles@32.3.2/ag-theme-quartz.css" />
+
+<p>welcome to dashboard!</p>
+
+<div class="example-wrapper">
+  <div class="example-header">
+    <span>Quick Search: </span>
+    <input
+      type="text"
+      id="filter-text-box"
+      placeholder="Search..."
+      (input)="onFilterTextBoxChanged()"
+    />
+  </div><br>
+<ag-grid-angular  
+      style="width: 1050px; height: 260px;"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [rowData]="rowData"
+      [class]="themeClass"
+      (gridReady)="onGridReady($event)"
+      [paginationPageSize]=5/>
+</div>
+<br>
+<button class="button" (click)="openAddProduct()">Add Product</button>
+ <!-- style="width: 1050px; height: 300px;"
+    class="ag-theme-quartz"-->
+}
+@if(addProdVal){ 
+<div class="example-wrapper">
+  <app-add-product></app-add-product>
+</div>
+}
