@@ -34,11 +34,11 @@ export class DashboardComponent {
   public themeClass: string =
     "ag-theme-quartz";
   columnDefs: ColDef[] = [
-    {headerName: 'ID', field: 'id'},
-    {headerName: 'Name', field: 'name'},
-    {headerName: 'Description', field: 'desc'},
-    {headerName: 'Price', field: 'price'},
-    {headerName: 'Rating', field: 'rating'}
+    {headerName: 'ID', field: 'id', filter: true, floatingFilter: true},
+    {headerName: 'Name', field: 'name', filter: true, floatingFilter: true},
+    {headerName: 'Description', field: 'desc', filter: true, floatingFilter: true},
+    {headerName: 'Price', field: 'price', filter: true, floatingFilter: true},
+    {headerName: 'Rating', field: 'rating', filter: true, floatingFilter: true}
 ];
   rowData: Product[];
 
