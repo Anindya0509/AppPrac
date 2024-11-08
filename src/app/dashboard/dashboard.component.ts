@@ -31,6 +31,7 @@ export class DashboardComponent {
   public defaultColDef: ColDef = {
     flex: 1,
   };
+  public paginationPageSizeSelector = [5,10,20];
   public themeClass: string =
     "ag-theme-quartz";
   columnDefs: ColDef[] = [
