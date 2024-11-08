@@ -9,6 +9,7 @@ import { ColDef,
 import { AgGridAngular } from 'ag-grid-angular';
 import { AddProductService } from '../Service/add-product.service';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { ActionsButtonComponent } from '../actions-button/actions-button.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -39,7 +40,8 @@ export class DashboardComponent {
     {headerName: 'Name', field: 'name', filter: true, floatingFilter: true},
     {headerName: 'Description', field: 'desc', filter: true, floatingFilter: true},
     {headerName: 'Price', field: 'price', filter: true, floatingFilter: true},
-    {headerName: 'Rating', field: 'rating', filter: true, floatingFilter: true}
+    {headerName: 'Rating', field: 'rating', filter: true, floatingFilter: true},
+    {headerName: 'Actions', field: 'actions',cellRenderer: ActionsButtonComponent}
 ];
   rowData: Product[];
 
