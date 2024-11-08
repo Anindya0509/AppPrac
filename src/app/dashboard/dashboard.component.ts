@@ -44,6 +44,9 @@ export class DashboardComponent {
 
   onGridReady(params: GridReadyEvent){
     console.log("Event Occuered");
+    if(!this.addProdVal){
+      this.rowData = JSON.parse(localStorage.getItem("AllProducts"));
+      }
 
     //this.gridApi = params.api;
     // this.http
@@ -60,7 +63,7 @@ export class DashboardComponent {
 
   ngOnInit(){     
     //localStorage.setItem("AllProducts", JSON.stringify(products));
-    this.rowData = JSON.parse(localStorage.getItem("AllProducts"));
+    //this.rowData = JSON.parse(localStorage.getItem("AllProducts"));
   }
 
   openAddProduct(){
