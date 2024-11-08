@@ -1,1 +1,16 @@
-<p>wishlist works!</p>
+<p>welcome to wishlist!</p>
+<h4>your wishlist items:</h4>
+
+@for(prod of newListWishlist; track prod.id; let i = $index){
+<table>
+    <td>
+        <span>Product Name</span><tr> {{prod.name}}</tr>
+        <span>Product Description</span><tr> {{prod.desc}}</tr>
+        <span>Product Price</span><tr> {{prod.price}}</tr>
+        <span>Product Rating</span><tr> {{prod.rating}}</tr>
+    </td>    
+</table>
+
+<button (click)="deleteFormWishlist(i)">Delete Form Wishlist</button>
+<br>
+}

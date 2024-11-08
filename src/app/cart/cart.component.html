@@ -1,1 +1,20 @@
-<p>cart works!</p>
+<p>welcome to cart!</p>
+<h3>Your Total Bill Amount is: {{totalVal + totalVal*0.18}}</h3>
+<h4>invoice details:</h4>
+<p>Total Items: {{totalVal}}</p>
+<p>GST: {{totalVal*0.18}}</p>
+
+<h4>your cart items:</h4>
+
+@for(prod of newListCart; track prod.id; let i = $index){
+<table>
+    <td>
+        <span>Product Name</span><tr> {{prod.name}}</tr>
+        <span>Product Price</span><tr> {{prod.price}}</tr>
+        <span>Product Rating</span><tr> {{prod.rating}}</tr>
+    </td>    
+</table>
+
+<button (click)="deleteFormCart(i)">Delete Form Cart</button>
+<br>
+}
