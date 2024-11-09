@@ -15,6 +15,11 @@ export class ActionsButtonComponent {
   constructor(private router: Router){}
 
   prodData: Product = {id:0, name: '', desc: '', price: 0, rating: 0};
+
+  //to initialize locastorage object, to be commented after fisrt time
+  //newListCart: Product[] = [];
+  //newListWishlist: Product[] = [];
+
   newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));
   newListWishlist: Product[] = JSON.parse(localStorage.getItem("addedToWishlistProducts"));
 

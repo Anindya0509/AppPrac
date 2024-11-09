@@ -65,8 +65,8 @@ export class DashboardComponent {
   }
 
   ngOnInit(){     
+    //to initialize locastorage object, to be commented after fisrt time
     //localStorage.setItem("AllProducts", JSON.stringify(products));
-    //this.rowData = JSON.parse(localStorage.getItem("AllProducts"));
   }
 
   openAddProduct(){
