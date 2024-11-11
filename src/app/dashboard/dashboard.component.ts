@@ -23,11 +23,8 @@ export class DashboardComponent {
   public addProdVal: boolean;
   constructor(private addProdService: AddProductService){
     this.addProdVal = this.addProdService.getCompOpen();
-    //console.log("Behav Sub val" + this.addProdService.addProductComponentOpen.subscribe(res => (this.addProdService.setCompOpen(res))));
     this.addProdService.addProductComponentOpen.subscribe((res) => {this.addProdVal = res;})
   }
-  //@ViewChild('modal', {static: false}) modal: AddProductComponent
-  //private gridApi!: GridApi;
 
   public defaultColDef: ColDef = {
     flex: 1,
@@ -50,23 +47,18 @@ export class DashboardComponent {
     if(!this.addProdVal){
       this.rowData = JSON.parse(localStorage.getItem("AllProducts"));
       }
-
-    //this.gridApi = params.api;
-    // this.http
-    //   .get<any[]>("https://www.ag-grid.com/example-assets/olympic-winners.json")
-    //   .subscribe((data) => (this.rowData = data));
     
-  }
-  onFilterTextBoxChanged(){
-    // this.gridApi.setGridOption(
-    //   "quickFilterText",
-    //   (document.getElementById("filter-text-box") as HTMLInputElement).value,
-    // );
   }
 
   ngOnInit(){     
-    //to initialize locastorage object, to be commented after fisrt time
-    //localStorage.setItem("AllProducts", JSON.stringify(products));
+  if(JSON.parse(localStorage.getItem("AllProducts")) == null || JSON.parse(localStorage.getItem("AllProducts")) == undefined){
+    localStorage.setItem("AllProducts", JSON.stringify(products));}
+
+  if(JSON.parse(localStorage.getItem("addedToCartProducts")) == null || JSON.parse(localStorage.getItem("addedToCartProducts")) == undefined){
+      localStorage.setItem("addedToCartProducts", JSON.stringify(newListCart));}
+
+  if(JSON.parse(localStorage.getItem("addedToWishlistProducts")) == null || JSON.parse(localStorage.getItem("addedToWishlistProducts")) == undefined){
+        localStorage.setItem("addedToWishlistProducts", JSON.stringify(newListWishlist));}
   }
 
   openAddProduct(){
@@ -83,14 +75,18 @@ export interface Product{
   name:string,
   desc:string,
   price:number,
-  rating:number
+  rating:number,
+  productQuan: number
 }
+
+const newListCart: Product[] = [];
+const newListWishlist: Product[] = [];
 const products: Product[] = [
-  {id:1, name: 'Laptop', desc: 'Old', price: 12456, rating: 5},
-  {id:2, name: 'Mobile', desc: 'New', price: 65475, rating: 4},
-  {id:3, name: 'Charger', desc: 'Large', price: 98741, rating: 4},
-  {id:4, name: 'SoundBox', desc: 'Loud', price: 63244, rating: 4},
-  {id:5, name: 'Fan', desc: 'Moderate', price: 21475, rating: 3}
+  {id:1, name: 'Laptop', desc: 'Old', price: 12456, rating: 5, productQuan: 1},
+  {id:2, name: 'Mobile', desc: 'New', price: 65475, rating: 4, productQuan: 1},
+  {id:3, name: 'Charger', desc: 'Large', price: 98741, rating: 4, productQuan: 1},
+  {id:4, name: 'SoundBox', desc: 'Loud', price: 63244, rating: 4, productQuan: 1},
+  {id:5, name: 'Fan', desc: 'Moderate', price: 21475, rating: 3, productQuan: 1}
 ]
 
 

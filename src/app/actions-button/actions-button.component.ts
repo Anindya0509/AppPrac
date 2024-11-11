@@ -14,11 +14,7 @@ export class ActionsButtonComponent {
   
   constructor(private router: Router){}
 
-  prodData: Product = {id:0, name: '', desc: '', price: 0, rating: 0};
-
-  //to initialize locastorage object, to be commented after fisrt time
-  //newListCart: Product[] = [];
-  //newListWishlist: Product[] = [];
+  prodData: Product = {id:0, name: '', desc: '', price: 0, rating: 0, productQuan: 1};
 
   newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));
   newListWishlist: Product[] = JSON.parse(localStorage.getItem("addedToWishlistProducts"));
@@ -29,20 +25,19 @@ export class ActionsButtonComponent {
     this.prodData.desc = params.data.desc;
     this.prodData.price = params.data.price;
     this.prodData.rating = params.data.rating;
+    this.prodData.productQuan = 1;
   }
     refresh(params: ICellRendererParams) {
         return true;
     }
     cartButtonClicked() {
       this.newListCart.push(this.prodData);
-      localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart));
-     
+      localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart));     
       this.router.navigate(['cart']);
     }
     wishlistButtonClicked() {
       this.newListWishlist.push(this.prodData);
-      localStorage.setItem("addedToWishlistProducts",JSON.stringify(this.newListWishlist));
-     
+      localStorage.setItem("addedToWishlistProducts",JSON.stringify(this.newListWishlist));     
       this.router.navigate(['wishlist']);
   }
 }

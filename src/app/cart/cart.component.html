@@ -1,10 +1,10 @@
 <p>welcome to cart!</p>
-<h3>Your Total Bill Amount is: {{totalVal + totalVal*0.18}}</h3>
-<h4>invoice details:</h4>
-<p>Total Items: {{totalVal}}</p>
-<p>GST: {{totalVal*0.18}}</p>
 
 <h4>your cart items:</h4>
+<h5> Current Cart Value: {{totalVal | number}}</h5>
+
+<button (click)="goToInvoice()">Generate Invoice</button>
+<br>
 
 @for(prod of newListCart; track prod.id; let i = $index){
 <table>
@@ -14,7 +14,12 @@
         <span>Product Rating</span><tr> {{prod.rating}}</tr>
     </td>    
 </table>
+<button (click)="addQuan(i)">Add Quantity</button>
+{{prod.productQuan}}
+<button (click)="delQuan(i)">Delete Quantity</button>
+<br>
 
+<br>
 <button (click)="deleteFormCart(i)">Delete Form Cart</button>
 <br>
 }
