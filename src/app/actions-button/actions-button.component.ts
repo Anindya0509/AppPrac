@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ICellRendererParams } from 'ag-grid-community';
-import { Product } from '../dashboard/dashboard.component';
 import { Router } from '@angular/router';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-actions-button',
@@ -14,7 +14,7 @@ export class ActionsButtonComponent {
   
   constructor(private router: Router){}
 
-  prodData: Product = {id:0, name: '', desc: '', price: 0, rating: 0, productQuan: 1};
+  prodData: Product = new Product();
 
   newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));
   newListWishlist: Product[] = JSON.parse(localStorage.getItem("addedToWishlistProducts"));
@@ -25,7 +25,8 @@ export class ActionsButtonComponent {
     this.prodData.desc = params.data.desc;
     this.prodData.price = params.data.price;
     this.prodData.rating = params.data.rating;
-    this.prodData.productQuan = 1;
+    this.prodData.productQuan = params.data.productQuan;
+    this.prodData.prodImg = params.data.prodImg;
   }
     refresh(params: ICellRendererParams) {
         return true;

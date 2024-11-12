@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from '../dashboard/dashboard.component';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-wishlist',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Product } from '../dashboard/dashboard.component';
 import { Router } from '@angular/router';
 import { InvoiceService } from '../Service/invoice.service';
 import { CommonModule } from '@angular/common';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-cart',

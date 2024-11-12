@@ -41,6 +41,12 @@
                 <span>Enter Rating</span><br><input type="number" placeholder="Rating" formControlName="rating"/>
             </div>
         </div><br>
+
+        <div class="column">
+            <div class="input-box">
+                <span>Upload Image</span><br><input type="file" (change)="uploadImageChange($event)" placeholder="UploadFile" formControlName="image"/>
+            </div>
+        </div><br>
         
     </form>
     <button (click)="saveProduct()">Save Product</button>
