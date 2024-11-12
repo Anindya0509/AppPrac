@@ -1,6 +1,5 @@
 <p>Welcome to Cart!</p>
 
-<br>
 @if(newListCart.length == 0){
     <h4>Nothing has been added to your Cart</h4> 
     <button (click)="backToDash()">Back to Dashboard</button><br> 
@@ -8,7 +7,7 @@
 @else{
     <h4>your cart items:</h4>
     <h5> Current Cart Value: {{totalVal | number}}</h5>    
-    <button (click)="backToDash()">Back to Dashboard</button><br> 
+    <button (click)="backToDash()">Back to Dashboard</button><br><br>
     <button (click)="goToInvoice()">Generate Invoice</button><br>  
 }
 
