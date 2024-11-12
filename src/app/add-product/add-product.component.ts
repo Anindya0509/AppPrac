@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {FormGroup,FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup,FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import { AddProductService } from '../Service/add-product.service';
 import { Product } from '../models/product.model';
 import { AlertService } from '../Service/alert.service';
@@ -48,11 +48,11 @@ export class AddProductComponent {
 
   ngOnInit(){
     this.reactiveForm = new FormGroup({
-      name: new FormControl(null),
-      description: new FormControl(null),
-      price: new FormControl(null),
-      rating: new FormControl(null),
-      image: new FormControl(null)
+      name: new FormControl(null, Validators.required),
+      description: new FormControl(null,Validators.required),
+      price: new FormControl(null,Validators.required),
+      rating: new FormControl(null,[Validators.required,Validators.min(1),Validators.max(5)]),
+      image: new FormControl(null,Validators.required)
     })
   } 
 

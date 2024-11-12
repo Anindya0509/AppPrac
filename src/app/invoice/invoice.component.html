@@ -10,15 +10,19 @@
 }
 
 <h3>CheckOut Amount: {{(totalPrice + totalPrice*0.18) - discount| number}}</h3>
-
-<form class="form" [formGroup]="reactiveForm">
+<section class="container">
+<form class="form" [formGroup]="reactiveForm" (ngSubmit)="checkOut()">
     <div class="column">
         <div class="input-box">
             <span>Enter Coupon Code</span><br><input type="text" placeholder="CouponCode-15OFF" formControlName="coupon"/>
         </div>
+        @if(reactiveForm.get('coupon').errors?.['invalidCoupon'] && !reactiveForm.get('coupon').untouched){
+            <small>*Coupon is Invalid</small><br>
+            <button  (click)="removeCoupon()">Remove Coupon</button>}
     </div>
 </form>
 <br>
-<button (click)="addCoupon()">Add Coupon</button> <br>
+<button  (click)="addCoupon()">Add Coupon</button>
+</section> <br>
 <br>
-<button (click)="checkOut()">Place your Order</button>
+<button type="submit" class="submit-btn" [disabled]="reactiveForm.get('coupon').errors?.['invalidCoupon']">Place your Order</button>

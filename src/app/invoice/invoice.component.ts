@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InvoiceService } from '../Service/invoice.service';
+import { checkCouponCodeValidator } from '../validators/couponCodeCheck.validator';
 
 @Component({
   selector: 'app-invoice',
@@ -29,7 +30,7 @@ export class InvoiceComponent {
   }
 
   checkOut(){
-    window.alert("your order is successful");
+    window.alert("your order is successful!!! Keep Shopping!!!");
     this.router.navigate(['dashboard']);
   }
 
@@ -37,12 +38,21 @@ export class InvoiceComponent {
     if(this.reactiveForm.get('coupon').value === "15OFF"){
       this.discount = this.totalPrice*0.15;
       this.showDiscount = true;
+    } else {
+      this.discount =0;
+      this.showDiscount = false;
     }
+    //console.log("inv"+this.reactiveForm.get('coupon').value);
+  }
+  removeCoupon(){
+    this.reactiveForm.get('coupon').setValue(null);
+    this.discount =0;
+    this.showDiscount = false;
   }
 
   ngOnInit(){
     this.reactiveForm = new FormGroup({
-      coupon: new FormControl(null)});
+      coupon: new FormControl(null,checkCouponCodeValidator.checkCouponCode)});
   }
 
 }

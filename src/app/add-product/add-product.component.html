@@ -4,13 +4,15 @@
     
     <div class="card text-bg-light mx-3">
         <div class="card-body text-center">
-    <form class="form" [formGroup]="reactiveForm">
+    <form class="form" [formGroup]="reactiveForm" (ngSubmit)="saveProduct()">
         <br>
 
         <div class="column">
             <div class="input-box">
                 <span>Enter Product Name</span><br><input type="text" placeholder="Name" formControlName="name"/>
             </div>
+            @if(reactiveForm.get('name').invalid && reactiveForm.get('name').touched){
+            <small>*Product Name must be entered</small>}
         </div>
 
         <br>
@@ -19,6 +21,8 @@
             <div class="input-box">
                 <span>Enter Description</span><br><input type="text" placeholder="Description" formControlName="description"/>
             </div>
+            @if(reactiveForm.get('description').invalid && reactiveForm.get('description').touched){
+            <small>*Product Description must be entered</small>}
         </div>
 
         <br>
@@ -27,14 +31,18 @@
             <div class="input-box">
                 <span>Enter Price</span><br><input type="number" placeholder="Price" formControlName="price"/>
             </div>
+            @if(reactiveForm.get('price').invalid && reactiveForm.get('price').touched){
+            <small>*Product Price must be entered</small>}
         </div>
 
         <br>
 
         <div class="column">
             <div class="input-box">
-                <span>Enter Rating</span><br><input type="number" placeholder="Rating" formControlName="rating"/>
+                <span>Enter Rating</span><br><input type="number" placeholder="Rating(1-5)" formControlName="rating"/>
             </div>
+            @if(reactiveForm.get('rating').invalid && reactiveForm.get('rating').touched){
+            <small>*Rating must be from 1 - 5</small>}
         </div><br>
 
         <div class="column">
@@ -45,11 +53,13 @@
             <div class="input-box" style="margin-left: 100px;">
                 <input type="file" (change)="uploadImageChange($event)" placeholder="UploadFile" formControlName="image"/>
             </div>
+            @if(reactiveForm.get('image').invalid && reactiveForm.get('image').touched){
+            <small>*Product Image must be uploaded</small>}
         </div>
         
     </form>
 </div></div>
-    <button (click)="saveProduct()">Save Product</button>
+    <button type="submit" class="submit-btn" [disabled]="!reactiveForm">Save Product</button>
 </section><br>
 
 <button (click)="closePopUp()">Cancel</button>
