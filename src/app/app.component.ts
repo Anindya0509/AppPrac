@@ -20,12 +20,13 @@ export class AppComponent {
   newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));   
 
   constructor(private badgeCountService: BadgeCountService){
+    
     this.badgeCountService.setCartBadgeCount(this.newListCart.length);
     this.badgeCountService.setWishlistBadgeCount(this.newListWishlist.length);
     this.badgeCountService.wishlistBadgeCount.subscribe((wishlist) => {this.wishlistCount = wishlist;})
-    this.badgeCountService.cartBadgeCount.subscribe((cart) => {this.cartCount = cart;})
-    this.wishlistCount = this.badgeCountService.getWishlistBadgeCount();
-    this.cartCount = this.badgeCountService.getCartBadgeCount();
+    this.badgeCountService.cartBadgeCount.subscribe((cart) => {this.cartCount = cart;})    
+    //this.wishlistCount = this.badgeCountService.getWishlistBadgeCount();
+    //this.cartCount = this.badgeCountService.getCartBadgeCount();
     console.log("from app component" + this.wishlistCount + " " +  this.cartCount);
   }
 

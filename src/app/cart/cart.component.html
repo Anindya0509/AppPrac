@@ -1,26 +1,27 @@
 <p>Welcome to Cart!</p>
 
-
-@if(newListCart.length != 0){
-<h4>your cart items:</h4>
-<h5> Current Cart Value: {{totalVal | number}}</h5>
-<button (click)="goToInvoice()">Generate Invoice</button>
+<br>
+@if(newListCart.length == 0){
+    <h4>Nothing has been added to your Cart</h4> 
+    <button (click)="backToDash()">Back to Dashboard</button><br> 
 }
 @else{
-    <h4>Nothing has been added to your Cart</h4>
-    <button (click)="backToDash()">Back to Dashboard</button> 
+    <h4>your cart items:</h4>
+    <h5> Current Cart Value: {{totalVal | number}}</h5>    
+    <button (click)="backToDash()">Back to Dashboard</button><br> 
+    <button (click)="goToInvoice()">Generate Invoice</button><br>  
 }
-<br>
+
 
 @for(prod of newListCart; track prod.id; let i = $index){
     <div class="card text-bg-light mx-3">
         <div class="card-body text-center">
-            <table>
+            <table class="card wishlist">                    
                 <td>
-                    <span><b>Product Name</b></span><tr> {{prod.name}}</tr>
-                    <span><b>Product Price</b></span><tr> {{prod.price}}</tr>
-                    <span><b>Product Rating</b></span><tr> {{prod.rating}}</tr>
-                </td>    
+                    <tr><span><b>Product Name:</b></span> {{prod.name}}</tr>
+                    <tr><span><b>Product Price:</b></span> {{prod.price}}</tr>
+                    <tr><span><b>Product Rating:</b></span> {{prod.rating}}</tr>
+                </td> 
             </table>
         </div>
       </div>

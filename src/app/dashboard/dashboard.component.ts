@@ -23,6 +23,8 @@ import { ProductImageComponent } from '../product-image/product-image.component'
 export class DashboardComponent {
   
   public addProdVal: boolean;
+  newListWishlist: Product[] = JSON.parse(localStorage.getItem("addedToWishlistProducts"));
+  newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));
   constructor(private addProdService: AddProductService){
     this.addProdVal = this.addProdService.getCompOpen();
     this.addProdService.addProductComponentOpen.subscribe((res) => {this.addProdVal = res;})
@@ -54,7 +56,6 @@ export class DashboardComponent {
     if(!this.addProdVal){
       this.rowData = JSON.parse(localStorage.getItem("AllProducts"));
       }
-    
   }
 
   ngOnInit(){     

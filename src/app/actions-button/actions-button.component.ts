@@ -3,6 +3,7 @@ import { ICellRendererParams } from 'ag-grid-community';
 import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
 import { AlertService } from '../Service/alert.service';
+import { BadgeCountService } from '../Service/badge-count.service';
 
 @Component({
   selector: 'app-actions-button',
@@ -13,7 +14,7 @@ import { AlertService } from '../Service/alert.service';
 })
 export class ActionsButtonComponent {
   
-  constructor(private router: Router, private alertService: AlertService){}
+  constructor(private router: Router, private alertService: AlertService, private badgeCountService: BadgeCountService){}
 
   prodData: Product = new Product();
   
@@ -39,13 +40,15 @@ export class ActionsButtonComponent {
       if(window.confirm("Do you want to open Cart?")){  
       this.router.navigate(['cart']);
       }
+      this.badgeCountService.setCartBadgeCount(this.newListCart.length);
       this.alertService.success('Item added to your Cart Successfully!!',this.alertService.options);
     }
     wishlistButtonClicked() {
       this.newListWishlist.push(this.prodData);
       localStorage.setItem("addedToWishlistProducts",JSON.stringify(this.newListWishlist));
       if(window.confirm("Do you want to open Wishlist?")){       
-      this.router.navigate(['wishlist']);}
+      this.router.navigate(['wishlist']);}      
+      this.badgeCountService.setWishlistBadgeCount(this.newListWishlist.length);
       this.alertService.success('Item added to your Wishlist Successfully!!',this.alertService.options);
   }
 }

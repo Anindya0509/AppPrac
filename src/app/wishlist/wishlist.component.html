@@ -10,12 +10,12 @@
 @for(prod of newListWishlist; track prod.id; let i = $index){
     <div class="card text-bg-light mx-3">
         <div class="card-body text-center">
-            <table>
+            <table class="card wishlist">
              <td>
-        <span><b>Product Name</b></span><tr> {{prod.name}}</tr>
-        <span><b>Product Description</b></span><tr> {{prod.desc}}</tr>
-        <span><b>Product Price</b></span><tr> {{prod.price}}</tr>
-        <span><b>Product Rating</b></span><tr> {{prod.rating}}</tr>
+                <tr><span><b>Product Name:</b></span> {{prod.name}}</tr>
+                <tr><span><b>Product Description: </b></span> {{prod.desc}}</tr>
+                <tr><span><b>Product Price:</b></span> {{prod.price}}</tr>
+                <tr><span><b>Product Rating:</b></span> {{prod.rating}}</tr>
              </td>    
             </table>
         </div>
