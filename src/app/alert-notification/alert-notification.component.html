@@ -1,0 +1,6 @@
+@for(alert of alerts; track alert.id; let i = $index){
+<div class="{{cssClass(alert)}}">
+    <div [innerHTML]="alert.message"></div>
+    <button type="button" class="btn-close" aria-label="Close" (click)="removeAlert(alert)">X</button>
+</div>
+}

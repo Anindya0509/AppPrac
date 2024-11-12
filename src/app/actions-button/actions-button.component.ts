@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ICellRendererParams } from 'ag-grid-community';
 import { Router } from '@angular/router';
 import { Product } from '../models/product.model';
+import { AlertService } from '../Service/alert.service';
 
 @Component({
   selector: 'app-actions-button',
@@ -12,9 +13,10 @@ import { Product } from '../models/product.model';
 })
 export class ActionsButtonComponent {
   
-  constructor(private router: Router){}
+  constructor(private router: Router, private alertService: AlertService){}
 
   prodData: Product = new Product();
+  
 
   newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));
   newListWishlist: Product[] = JSON.parse(localStorage.getItem("addedToWishlistProducts"));
@@ -33,12 +35,17 @@ export class ActionsButtonComponent {
     }
     cartButtonClicked() {
       this.newListCart.push(this.prodData);
-      localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart));     
+      localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart)); 
+      if(window.confirm("Do you want to open Cart?")){  
       this.router.navigate(['cart']);
+      }
+      this.alertService.success('Item added to your Cart Successfully!!',this.alertService.options);
     }
     wishlistButtonClicked() {
       this.newListWishlist.push(this.prodData);
-      localStorage.setItem("addedToWishlistProducts",JSON.stringify(this.newListWishlist));     
-      this.router.navigate(['wishlist']);
+      localStorage.setItem("addedToWishlistProducts",JSON.stringify(this.newListWishlist));
+      if(window.confirm("Do you want to open Wishlist?")){       
+      this.router.navigate(['wishlist']);}
+      this.alertService.success('Item added to your Wishlist Successfully!!',this.alertService.options);
   }
 }

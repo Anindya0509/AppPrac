@@ -1,19 +1,30 @@
-<p>welcome to cart!</p>
+<p>Welcome to Cart!</p>
 
+
+@if(newListCart.length != 0){
 <h4>your cart items:</h4>
 <h5> Current Cart Value: {{totalVal | number}}</h5>
-
 <button (click)="goToInvoice()">Generate Invoice</button>
+}
+@else{
+    <h4>Nothing has been added to your Cart</h4>
+    <button (click)="backToDash()">Back to Dashboard</button> 
+}
 <br>
 
 @for(prod of newListCart; track prod.id; let i = $index){
-<table>
-    <td>
-        <span>Product Name</span><tr> {{prod.name}}</tr>
-        <span>Product Price</span><tr> {{prod.price}}</tr>
-        <span>Product Rating</span><tr> {{prod.rating}}</tr>
-    </td>    
-</table>
+    <div class="card text-bg-light mx-3">
+        <div class="card-body text-center">
+            <table>
+                <td>
+                    <span><b>Product Name</b></span><tr> {{prod.name}}</tr>
+                    <span><b>Product Price</b></span><tr> {{prod.price}}</tr>
+                    <span><b>Product Rating</b></span><tr> {{prod.rating}}</tr>
+                </td>    
+            </table>
+        </div>
+      </div>
+
 <button (click)="addQuan(i)">Add Quantity</button>
 {{prod.productQuan}}
 <button (click)="delQuan(i)">Delete Quantity</button>

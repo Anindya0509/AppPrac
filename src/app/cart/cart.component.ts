@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { InvoiceService } from '../Service/invoice.service';
 import { CommonModule } from '@angular/common';
 import { Product } from '../models/product.model';
+import { AlertService } from '../Service/alert.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ import { Product } from '../models/product.model';
 })
 export class CartComponent {
 
-  constructor(private router: Router, private invoiceServ: InvoiceService){}
+  constructor(private router: Router, private invoiceServ: InvoiceService, private alertService: AlertService){}
   newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));
   totalVal: number = 0;
 
@@ -21,8 +22,13 @@ export class CartComponent {
     this.totalVal-= this.newListCart[i].price;
     this.newListCart.splice(i,1);
     localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart));
+    this.calculateTotalVal();
+    this.alertService.success('Item has been deleted from cart Successfully!!',this.alertService.options);
   }
 
+  backToDash(){
+    this.router.navigate(['dashboard']);
+  }
   goToInvoice(){
     this.invoiceServ.totalPrice = this.totalVal;
     this.router.navigate(['invoice']);
