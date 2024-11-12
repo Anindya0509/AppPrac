@@ -2,14 +2,9 @@
     <h3>Add Products</h3>  
 <section class="container">
     
-
+    <div class="card text-bg-light mx-3">
+        <div class="card-body text-center">
     <form class="form" [formGroup]="reactiveForm">
-        <div class="column">
-            <div class="input-box">
-                <span>Enter ID</span><br><input type="number" placeholder="ID" formControlName="id"/>
-            </div>
-        </div>
-
         <br>
 
         <div class="column">
@@ -43,14 +38,19 @@
         </div><br>
 
         <div class="column">
-            <div class="input-box">
-                <span>Upload Image</span><br><input type="file" (change)="uploadImageChange($event)" placeholder="UploadFile" formControlName="image"/>
+            <span>Upload Image</span>
+        </div>
+
+        <div class="column">
+            <div class="input-box" style="margin-left: 100px;">
+                <input type="file" (change)="uploadImageChange($event)" placeholder="UploadFile" formControlName="image"/>
             </div>
-        </div><br>
+        </div>
         
     </form>
+</div></div>
     <button (click)="saveProduct()">Save Product</button>
-</section>
+</section><br>
 
 <button (click)="closePopUp()">Cancel</button>
 

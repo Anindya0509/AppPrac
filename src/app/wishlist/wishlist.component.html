@@ -1,6 +1,12 @@
-<p>welcome to wishlist!</p>
+<p>Welcome to Wishlist!</p>
+@if(newListWishlist.length!=0){
 <h4>your wishlist items:</h4>
+} 
+@else{
+<h4>Nothing has been added to your Wishlist</h4>
+}
 <button (click)="backToDash()">Back to Dashboard</button>
+
 @for(prod of newListWishlist; track prod.id; let i = $index){
     <div class="card text-bg-light mx-3">
         <div class="card-body text-center">

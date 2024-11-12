@@ -4,6 +4,7 @@ import { InvoiceService } from '../Service/invoice.service';
 import { CommonModule } from '@angular/common';
 import { Product } from '../models/product.model';
 import { AlertService } from '../Service/alert.service';
+import { BadgeCountService } from '../Service/badge-count.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,9 @@ import { AlertService } from '../Service/alert.service';
 })
 export class CartComponent {
 
-  constructor(private router: Router, private invoiceServ: InvoiceService, private alertService: AlertService){}
+  constructor(private router: Router, private invoiceServ: InvoiceService, private alertService: AlertService,
+    private badgeCountService: BadgeCountService
+  ){}
   newListCart: Product[] = JSON.parse(localStorage.getItem("addedToCartProducts"));
   totalVal: number = 0;
 
@@ -23,7 +26,8 @@ export class CartComponent {
     this.newListCart.splice(i,1);
     localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart));
     this.calculateTotalVal();
-    this.alertService.success('Item has been deleted from cart Successfully!!',this.alertService.options);
+    this.badgeCountService.setCartBadgeCount(this.newListCart.length);
+    this.alertService.success('Item has been deleted from cart Successfully!!',this.alertService.options);    
   }
 
   backToDash(){
@@ -58,5 +62,6 @@ export class CartComponent {
 
   ngOnInit(){
     this.calculateTotalVal();
+    this.badgeCountService.setCartBadgeCount(this.newListCart.length);
   }
 }

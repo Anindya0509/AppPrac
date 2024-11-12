@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {FormGroup,FormControl, ReactiveFormsModule} from '@angular/forms';
 import { AddProductService } from '../Service/add-product.service';
 import { Product } from '../models/product.model';
+import { AlertService } from '../Service/alert.service';
 
 @Component({
   selector: 'app-add-product',
@@ -22,13 +23,16 @@ export class AddProductComponent {
   //base64s
   uploadFileString: string;
 
-  constructor(private addProdService: AddProductService){
+  constructor(private addProdService: AddProductService, private alertService: AlertService){
     this.addProdVal = this.addProdService.getCompOpen();
+  }
+  getId(): number{
+    return this.newList.length + 1;
   }
   
   saveProduct(){
     
-    this.newProd.id = this.reactiveForm.get('id').value;
+    this.newProd.id = this.getId();
     this.newProd.name = this.reactiveForm.get('name').value;
     this.newProd.desc = this.reactiveForm.get('description').value;
     this.newProd.price = this.reactiveForm.get('price').value;
@@ -39,11 +43,11 @@ export class AddProductComponent {
     this.newList.push(this.newProd);
     localStorage.setItem("AllProducts",JSON.stringify(this.newList));
     this.closePopUp();
+    this.alertService.success('Added to Product List Successfully!!',this.alertService.options);
   }
 
   ngOnInit(){
     this.reactiveForm = new FormGroup({
-      id: new FormControl(null),
       name: new FormControl(null),
       description: new FormControl(null),
       price: new FormControl(null),

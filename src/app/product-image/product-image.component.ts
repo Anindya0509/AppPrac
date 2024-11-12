@@ -15,7 +15,6 @@ export class ProductImageComponent {
     agInit(params: ICellRendererParams): void {
         
         this.imgSrc = "data:image/png;base64,"+params.data.prodImg;
-        console.log(this.imgSrc);
     }
 
     // Return Cell Value

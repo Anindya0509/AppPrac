@@ -42,7 +42,7 @@ export class DashboardComponent {
     {headerName: 'Image',field: 'actions',cellRenderer: ProductImageComponent, width:100},
     {headerName: 'Name', field: 'name', filter: true, floatingFilter: true},
     {headerName: 'Description', field: 'desc', width:500},
-    {headerName: 'Price', field: 'price', filter: true, floatingFilter: true},
+    {headerName: 'Price (INR)', field: 'price', filter: true, floatingFilter: true},
     {headerName: 'Rating', field: 'rating', filter: true, floatingFilter: true, width:100},
     {headerName: 'Actions', field: 'actions',cellRenderer: ActionsButtonComponent, width:250}
 ];
@@ -51,7 +51,6 @@ export class DashboardComponent {
 
 
   onGridReady(params: GridReadyEvent){
-    console.log("Event Occuered");
     if(!this.addProdVal){
       this.rowData = JSON.parse(localStorage.getItem("AllProducts"));
       }
