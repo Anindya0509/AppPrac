@@ -35,7 +35,11 @@ export class ActionsButtonComponent {
         return true;
     }
     cartButtonClicked() {
-      this.newListCart.push(this.prodData);
+      if(this.checkAlreadyAddedToCart(this.prodData.id)){
+        this.newListCart[this.prodData.id-1].productQuan++;
+      } else {
+        this.newListCart.push(this.prodData);
+      }
       localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart)); 
       if(window.confirm("Do you want to open Cart?")){  
       this.router.navigate(['cart']);
@@ -43,12 +47,38 @@ export class ActionsButtonComponent {
       this.badgeCountService.setCartBadgeCount(this.newListCart.length);
       this.alertService.success('Item added to your Cart Successfully!!',this.alertService.options);
     }
+
+    checkAlreadyAddedToCart(id:number): boolean{
+      if(this.newListCart!= null || this.newListCart!= undefined || this.newListCart.length == 0){
+        for(let i=0;i<this.newListCart.length;i++){
+          if(this.newListCart[i].id == id){
+            return true;          
+          } 
+        }
+      }       
+      return false;     
+    }
+
     wishlistButtonClicked() {
-      this.newListWishlist.push(this.prodData);
+      if(this.checkAlreadyAddedToWishlist(this.prodData.id)){
+        this.alertService.error('Item already added to your Wishlist!!',this.alertService.options);
+      } else {
+        this.newListWishlist.push(this.prodData);      
       localStorage.setItem("addedToWishlistProducts",JSON.stringify(this.newListWishlist));
       if(window.confirm("Do you want to open Wishlist?")){       
       this.router.navigate(['wishlist']);}      
       this.badgeCountService.setWishlistBadgeCount(this.newListWishlist.length);
       this.alertService.success('Item added to your Wishlist Successfully!!',this.alertService.options);
+      }
+  }
+  checkAlreadyAddedToWishlist(id:number): boolean{
+    if(this.newListWishlist!= null || this.newListWishlist!= undefined || this.newListWishlist.length == 0){
+      for(let i=0;i<this.newListWishlist.length;i++){
+        if(this.newListWishlist[i].id == id){
+          return true;          
+        } 
+      }
+    }       
+    return false;     
   }
 }

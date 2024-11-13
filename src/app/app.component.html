@@ -10,9 +10,9 @@
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" routerLink="/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page">Dashboard</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/wishlist" routerLinkActive="active" ariaCurrentWhenActive="page">Wishlist</a></li>
-      <span class="badge">{{wishlistCount}}</span>
+      @if(wishlistCount!=0){<span class="badge">{{wishlistCount}}</span>}
       <li class="nav-item"><a class="nav-link" routerLink ="/cart" routerLinkActive="active" ariaCurrentWhenActive="page">Cart</a></li>
-      <span class="badge">{{cartCount}}</span>
+      @if(cartCount!=0){<span class="badge">{{cartCount}}</span>}
   </ul>
  </div>
 </nav>
