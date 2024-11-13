@@ -22,7 +22,6 @@ export class CartComponent {
   totalVal: number = 0;
 
   deleteFormCart(i:number){
-    this.totalVal-= this.newListCart[i].price;
     this.newListCart.splice(i,1);
     localStorage.setItem("addedToCartProducts",JSON.stringify(this.newListCart));
     this.calculateTotalVal();
@@ -62,6 +61,8 @@ export class CartComponent {
 
   ngOnInit(){
     this.calculateTotalVal();
-    this.badgeCountService.setCartBadgeCount(this.newListCart.length);
+    if(this.newListCart!=null || this.newListCart!=undefined){
+      this.badgeCountService.setCartBadgeCount(this.newListCart.length);
+    }
   }
 }
