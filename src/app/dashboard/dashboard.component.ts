@@ -72,7 +72,7 @@ export class DashboardComponent {
   openAddProduct(){
     this.addProdService.setCompOpen(true);
     this.addProdVal = this.addProdService.getCompOpen();
-    console.log(this.addProdVal);
+    //console.log(this.addProdVal);
     
   }
 

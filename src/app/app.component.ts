@@ -25,9 +25,7 @@ export class AppComponent {
     this.badgeCountService.setWishlistBadgeCount(this.newListWishlist.length);
     this.badgeCountService.wishlistBadgeCount.subscribe((wishlist) => {this.wishlistCount = wishlist;})
     this.badgeCountService.cartBadgeCount.subscribe((cart) => {this.cartCount = cart;})    
-    //this.wishlistCount = this.badgeCountService.getWishlistBadgeCount();
-    //this.cartCount = this.badgeCountService.getCartBadgeCount();
-    console.log("from app component" + this.wishlistCount + " " +  this.cartCount);
+    
   }
 
   
