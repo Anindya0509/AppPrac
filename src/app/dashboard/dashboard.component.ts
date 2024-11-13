@@ -1,11 +1,6 @@
-import {Component, inject, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import { ColDef,
-  ColGroupDef,
-  GridApi,
-  GridOptions,
-  GridReadyEvent,
-  ModuleRegistry,
-  createGrid, } from 'ag-grid-community';
+  GridReadyEvent, } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 import { AddProductService } from '../Service/add-product.service';
 import { AddProductComponent } from '../add-product/add-product.component';
