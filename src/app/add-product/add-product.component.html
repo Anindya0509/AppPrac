@@ -4,7 +4,7 @@
     
     <div class="card text-bg-light mx-3">
         <div class="card-body text-center">
-    <form class="form" [formGroup]="reactiveForm" (ngSubmit)="saveProduct()">
+    <form class="form" [formGroup]="reactiveForm">
         <br>
 
         <div class="column">
@@ -59,7 +59,7 @@
         
     </form>
 </div></div>
-    <button type="submit" class="submit-btn" [disabled]="!reactiveForm">Save Product</button>
+    <button type="submit" class="submit-btn"  (click)="saveProduct()" [disabled]="!reactiveForm.valid">Save Product</button>
 </section><br>
 
 <button (click)="closePopUp()">Cancel</button>

@@ -31,7 +31,7 @@ export class AddProductComponent {
   }
   
   saveProduct(){
-    
+    console.log("calling save product")
     this.newProd.id = this.getId();
     this.newProd.name = this.reactiveForm.get('name').value;
     this.newProd.desc = this.reactiveForm.get('description').value;
@@ -39,7 +39,7 @@ export class AddProductComponent {
     this.newProd.rating = this.reactiveForm.get('rating').value;
     //this.newProd.productQuan = 1;
     this.newProd.prodImg = this.uploadFileString;
-    console.log(this.uploadFileString);
+    //console.log(this.uploadFileString);
     this.newList.push(this.newProd);
     localStorage.setItem("AllProducts",JSON.stringify(this.newList));
     this.closePopUp();
@@ -59,7 +59,7 @@ export class AddProductComponent {
   closePopUp(){
     this.addProdService.setCompOpen(false);
     this.addProdVal = this.addProdService.getCompOpen();
-    console.log(this.addProdVal);
+    //console.log(this.addProdVal);
   }
 
   // uploadImage(): string {
@@ -94,6 +94,6 @@ _handleReaderLoaded(e) {
   var base64result = reader.result.substr(reader.result.indexOf(',') + 1);
   //this.imageSrc = base64result;
       this.uploadFileString = base64result;
-      console.log(this.uploadFileString);
+      //console.log(this.uploadFileString);
   }
 }

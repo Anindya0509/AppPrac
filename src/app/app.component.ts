@@ -21,8 +21,8 @@ export class AppComponent {
 
   constructor(private badgeCountService: BadgeCountService){
     
-    this.badgeCountService.setCartBadgeCount(this.newListCart.length);
-    this.badgeCountService.setWishlistBadgeCount(this.newListWishlist.length);
+    this.badgeCountService.setCartBadgeCount(this.newListCart?.length);
+    this.badgeCountService.setWishlistBadgeCount(this.newListWishlist?.length);
     this.badgeCountService.wishlistBadgeCount.subscribe((wishlist) => {this.wishlistCount = wishlist;})
     this.badgeCountService.cartBadgeCount.subscribe((cart) => {this.cartCount = cart;})    
     
